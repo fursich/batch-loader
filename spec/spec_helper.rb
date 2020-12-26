@@ -5,6 +5,12 @@ if ENV['CI']
   Coveralls.wear!
 end
 
+if RUBY_VERSION >= '2.7.0'
+  # NOTE: https://bugs.ruby-lang.org/issues/17000
+  # this will keep us informed of deprecation warnings after Ruby 2.7.2
+  Warning[:deprecated] = true
+end
+
 require_relative "../lib/batch_loader"
 
 require "graphql"
